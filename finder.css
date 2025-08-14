@@ -1,0 +1,152 @@
+/* Make body take full height and stack children vertically */
+body {
+    background: linear-gradient(to bottom, rgb(1, 1, 52), #ffffff);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* stack children vertically */
+    justify-content: space-between; /* push about-section to bottom */
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    overflow-y: auto; /* vertical scroll if needed */
+    /* removed flex-wrap as not needed here */
+}
+
+/* Container for top content */
+.container {
+    text-align: center;
+    margin-top: 100px; /* space from top */
+    width: 100%;
+}
+
+/* Main heading */
+.container h1 {
+    color: rgba(202, 213, 247, 0.635);
+    font-size: 2.5rem;
+    margin-top: 0;
+    transition: transform 0.3s ease-in-out;
+}
+.container h1:hover{
+     transform: scale(1.05);
+}
+
+/* Search bar styles */
+.search-container {
+    background: white;
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    padding: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    max-width: 90%;
+    margin: 30px auto 0 auto;
+    margin-bottom: 250px;
+    transition: transform 0.3s ease-in-out;
+}
+.search-container:hover {
+     transform: scale(1.05);
+}
+.search-container input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 15px 20px;
+    font-size: 16px;
+    border-radius: 50px;
+}
+
+.search-container button {
+    background: rgb(0, 0, 59);
+    color: grey;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+     
+}
+
+.search-container button:hover {
+    background: rgb(1, 1, 88);
+    color: whitesmoke;
+}
+
+/* About section at bottom */
+.about-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 40px;
+    background-color: #010134;
+    color: white;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%; /* full width */
+    box-sizing: border-box;
+}
+
+.about-text {
+    flex: 1 1 400px;
+    max-width: 600px;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #cad5f7;
+    transition: transform 0.3s ease-in-out;
+}
+.about-text h2:hover {
+    transform: scale(1.05);
+}
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ddd;
+    margin: 0;
+    transition: transform 0.3s ease-in-out;
+}
+.about-text p:hover{
+    transform: scale(1.05);
+}
+.about-image {
+    flex: 1 1 400px;
+    max-width: 600px;
+    text-align: center;
+    
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    
+    /* Add smooth transition */
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-image img:hover {
+    /* Zoom in by 5% */
+    transform: scale(1.05);
+}
+
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+    .about-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text h2 {
+        font-size: 2rem;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+}
