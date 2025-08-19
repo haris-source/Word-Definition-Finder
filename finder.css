@@ -1,22 +1,71 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+
 /* Make body take full height and stack children vertically */
 body {
     background: linear-gradient(to bottom, rgb(1, 1, 52), #ffffff);
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* stack children vertically */
-    justify-content: space-between; /* push about-section to bottom */
+    flex-direction: column;
+    justify-content: flex-start; /* keep content top-aligned */
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
-    overflow-y: auto; /* vertical scroll if needed */
-    /* removed flex-wrap as not needed here */
+    overflow-y: auto;
+}
+
+
+
+.navbar {
+    width: 100%;
+    background: rgb(1, 1, 52);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: top 0.4s ease;  /* 👈 smooth slide */
+}
+
+.logo img {
+    height: 60px;   /* 👈 adjust size */
+    width: auto;
+    margin-left: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;  /* space between links */
+}
+
+.nav-links a {
+    color: #ddd;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.logo img:hover{
+    transform: scale(1.05);
 }
 
 /* Container for top content */
 .container {
-    text-align: center;
-    margin-top: 100px; /* space from top */
+  text-align: center;
+    margin-top: 120px; 
+    margin-bottom: 100px; 
     width: 100%;
 }
 
@@ -24,54 +73,115 @@ body {
 .container h1 {
     color: rgba(202, 213, 247, 0.635);
     font-size: 2.5rem;
-    margin-top: 0;
+    margin-top: 80px;
     transition: transform 0.3s ease-in-out;
 }
-.container h1:hover{
+.container h1:hover {
      transform: scale(1.05);
 }
 
-/* Search bar styles */
 .search-container {
-    background: white;
-    display: flex;
-    align-items: center;
-    border-radius: 50px;
-    padding: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    width: 500px;
-    max-width: 90%;
-    margin: 30px auto 0 auto;
-    margin-bottom: 250px;
-    transition: transform 0.3s ease-in-out;
+  background: transparent;         
+  box-shadow: none;                  
+  border: 1px solid rgba(255,255,255,0.4);
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  padding: 10px;
+  width: 500px;
+  max-width: 90%;
+  margin: 30px auto 0;
+  transition: transform 0.3s ease-in-out;
+  margin-top: -20px;
+ 
 }
-.search-container:hover {
-     transform: scale(1.05);
-}
+
 .search-container input {
-    border: none;
-    outline: none;
-    flex: 1;
-    padding: 15px 20px;
-    font-size: 16px;
-    border-radius: 50px;
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 15px 20px;
+  font-size: 16px;
+  border-radius: 50px;
+  background: transparent;        
+  color: #fff;                        
+  caret-color: #fff;
 }
+
+.search-container input:focus {
+  background: transparent;            
+  color: #fff;
+}
+
+.search-container input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+/* remove white background from autofill suggestions */
+.search-container input:-webkit-autofill,
+.search-container input:-webkit-autofill:focus,
+.search-container input:-webkit-autofill:hover,
+.search-container input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #fff !important; /* keep text white */
+  caret-color: #fff;                        /* keep caret white */
+  transition: background-color 5000s ease-in-out 0s; /* trick to prevent flash */
+}
+
+
+
 
 .search-container button {
-    background: rgb(0, 0, 59);
-    color: grey;
+    background:  rgb(1, 1, 88);;
+    color: whitesmoke;
     border: none;
     padding: 15px 25px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s ease;
-     
+}
+.search-container button:hover {
+    background: rgb(0, 0, 59);
+    color: whitesmoke;
 }
 
-.search-container button:hover {
-    background: rgb(1, 1, 88);
-    color: whitesmoke;
+/* Result Section */
+#result {
+    display: none;
+    background: transparent;
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    margin: 20px auto 80px auto;
+    width: 600px;
+    max-width: 90%;
+    color: #020241;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    transition: transform 0.3s ease-in-out;
+    
+    
+}
+
+
+#result:hover {
+    transform: scale(1.05);
+}
+#result h2 {
+    margin-top: 0;
+    color: rgb(0, 0, 59);
+    font-size: 1.8rem;
+}
+#result h3 {
+    margin-bottom: 5px;
+    color: white;
+    font-size: 1.3rem;
+}
+#result p {
+    margin: 0 0 15px;
+    color: white;
 }
 
 /* About section at bottom */
@@ -83,9 +193,12 @@ body {
     background-color: #010134;
     color: white;
     flex-wrap: wrap;
-    gap: 40px;
-    width: 100%; /* full width */
+    gap: 450px;
+    width: 100%;
     box-sizing: border-box;
+    margin-top: 250px;
+    
+   
 }
 
 .about-text {
@@ -109,31 +222,25 @@ body {
     margin: 0;
     transition: transform 0.3s ease-in-out;
 }
-.about-text p:hover{
+.about-text p:hover {
     transform: scale(1.05);
 }
+
 .about-image {
     flex: 1 1 400px;
     max-width: 600px;
     text-align: center;
-    
 }
-
 .about-image img {
     width: 100%;
     max-width: 500px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    
-    /* Add smooth transition */
     transition: transform 0.3s ease-in-out;
 }
-
 .about-image img:hover {
-    /* Zoom in by 5% */
     transform: scale(1.05);
 }
-
 
 /* Responsive for smaller screens */
 @media (max-width: 768px) {
@@ -141,11 +248,9 @@ body {
         flex-direction: column;
         text-align: center;
     }
-
     .about-text h2 {
         font-size: 2rem;
     }
-
     .about-text p {
         font-size: 1rem;
     }
