@@ -55,5 +55,9 @@ window.addEventListener("scroll", function() {
     navbar.style.top = "0";
   }
 
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // avoid negative
+if (currentScroll <= 0) {
+  lastScrollTop = 0;
+} else {
+  lastScrollTop = currentScroll;
+}
 });
